@@ -1,6 +1,47 @@
 @Tutorial7_HostAddress = http://localhost:5178
 
-GET {{Tutorial7_HostAddress}}/weatherforecast/
+GET {{Tutorial7_HostAddress}}/api/appointments
+Accept: application/json
+
+###
+
+GET {{Tutorial7_HostAddress}}/api/appointments?status=Scheduled&patientLastName=Kowalska
+Accept: application/json
+
+###
+
+GET {{Tutorial7_HostAddress}}/api/appointments/1
+Accept: application/json
+
+###
+
+POST {{Tutorial7_HostAddress}}/api/appointments
+Content-Type: application/json
+
+{
+  "idPatient": 1,
+  "idDoctor": 2,
+  "appointmentDate": "2026-05-20T10:30:00",
+  "reason": "Control visit"
+}
+
+###
+
+PUT {{Tutorial7_HostAddress}}/api/appointments/1
+Content-Type: application/json
+
+{
+  "idPatient": 1,
+  "idDoctor": 1,
+  "appointmentDate": "2026-05-22T12:00:00",
+  "status": "Scheduled",
+  "reason": "Rescheduled cardiology consultation",
+  "internalNotes": "Patient asked for a later hour."
+}
+
+###
+
+DELETE {{Tutorial7_HostAddress}}/api/appointments/1
 Accept: application/json
 
 ###
